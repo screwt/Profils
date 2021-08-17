@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 style="text-align: center"> Add Profil Auto Form</h3>
+<hr/>
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        {{ photoformset.as_table }}
+        <tr>
+            <td colspan="2">
+                <input type="submit"/>
+            </td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

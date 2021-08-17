@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block content %}
+    <form class="form-horizontal" action="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>PROFIL D'ENFANT</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="profil_id">PROFIL ID</label>
+                <div class="col-md-4">
+                    <input readonly id="profil_id" name="profil_id" placeholder="Profil id"
+                           class="form-control input-md"
+                           required="" type="text">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nom">Nom d'enfant</label>
+                <div class="col-md-4">
+                    <input id="nom" name="nom" placeholder="Nom d'enfant"
+                           class="form-control input-md" required="" type="text">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="prenom">Prénom d'enfant</label>
+                <div class="col-md-4">
+                    <input id="prenom" name="prenom" placeholder="Prénom d'enfant"
+                           class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="date_de_naissance">Date de naissance</label>
+                <div class="col-md-4">
+                    <input type="date" id="date_de_naissance" name="date_de_naissance" value="2021-01-01"
+                           min="1997-01-01"
+                           max="2018-12-31">
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="classe_ecole">Classe</label>
+                <div class="col-md-4">
+                    <select id="classe_ecole" name="classe_ecole" class="form-control">
+                        <option value="">--Please choose an option--</option>
+                        <option value="CP">CP</option>
+                        <option value="CE1">CE1</option>
+                        <option value="CE2">CE2</option>
+                        <option value="CM1">CM1</option>
+                        <option value="CM2">CM2</option>
+                        <option value="6EME">6EME</option>
+                        <option value="5EME">5EME</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="phone">Numéro de téléphone</label>
+                <div class="col-md-4">
+                    <input type="tel" id="phone" name="phone" placeholder="Numéro de téléphone"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           required
+                           class="form-control input-md">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="adresse">Adresse</label>
+                <div class="col-md-4">
+                    <select id="adresse" name="adresse" class="form-control">
+                        <option value="">--Please choose an option--</option>
+                        <option value="TThoi">Tân Thới</option>
+                        <option value="TThanh">Tân Thành</option>
+                        <option value="THiep">Tân Hiệp</option>
+                        <option value="TPhu">Tân Phú</option>
+                        <option value="TQuy">Tân Quý</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="ville">Ville</label>
+                <div class="col-md-4">
+                    <select id="ville" name="ville" class="form-control">
+                        <option value="">--Please choose an option--</option>
+                        <option value="TThoi">Tân Thới</option>
+                        <option value="TThanh">Tân Thành</option>
+                        <option value="THiep">Tân Hiệp</option>
+                        <option value="TPhu">Tân Phú</option>
+                        <option value="TQuy">Tân Quý</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="histoire_famille">Histoire de famille</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="histoire_famille" name="histoire_famille"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="etat">Etat</label>
+                <div class="col-md-4">
+                    <select id="etat" name="etat" class="form-control">
+                        <option selected="selected" value="Nouveau">Nouveau</option>
+                        <option value="Entrain">En train de chercher</option>
+                        <option value="Visiter">Visite</option>
+                        <option value="Non">Non</option>
+                        <option value="Parrainer">Parrainé</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="date_dajoute">Date d'ajoute</label>
+                <div class="col-md-4">
+                    <input type="date" id="date_dajoute" name="date_dajoute" value="2021-01-01" min="1997-01-01"
+                           max="2018-12-31">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="nom_parrain">Nom parrain ou marraine</label>
+                <div class="col-md-4">
+                    <input id="nom_parrain" name="nom_parrain" placeholder="Nom parrain ou marraine"
+                           class="form-control input-md" required="" type="text">
+                </div>
+            </div>
+
+            <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="image">main_image</label>
+                <div class="col-md-4">
+                    <input id="image1" name="image" class="input-file" type="file">
+                </div>
+            </div>
+
+                <!-- File Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="image">main_image</label>
+                <div class="col-md-4">
+                    <input id="image2" name="image" class="input-file" type="file">
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="ajouter"></label>
+                <div class="col-md-4">
+                    <button id="ajouter" name="ajouter" class="btn btn-primary" type="submit">Ajouter</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

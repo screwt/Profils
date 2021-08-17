@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <div class="uk-width-large uk-magrin">
+        <div class="uk-card uk-card-small uk-card-default uk-card-body">
+            <h3 class="align">
+                SIGNUP FORM
+            </h3>
+            <form method="post">
+                {% csrf_token %}
+
+                <p class="space"><strong>Username</strong></p>
+               {% comment %} <input type="text" name="username" class="form-control" placeholder="Enter Username" maxlength="200">{% endcomment %}
+                {{ form.username }}
+                <br/>
+
+                <p class="space"><strong>Email</strong></p>
+               {% comment %} <input type="email" name="email" class="form-control" placeholder="Enter Email" maxlength="200">{% endcomment %}
+                 {{ form.email }}
+                <br/>
+
+                <p class="space"><strong>Password</strong></p>
+                {% comment %}<input type="text" name="password1" class="form-control" placeholder="Enter Password" maxlength="200">{% endcomment %}
+                {{ form.password1 }}
+                <br/>
+
+                <p class="space"><strong>Confirm Password</strong></p>
+                {% comment %}<input type="email" name="password2" class="form-control" placeholder="Confirm Password" maxlength="200">{% endcomment %}
+                 {{ form.password2 }}
+                <br/>
+
+                <button class="btn btn-primary size" type="submit">Register</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

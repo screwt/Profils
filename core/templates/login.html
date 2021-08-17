@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for massage in massages %}
+        <p class="msg bg-dark">{{ message }}</p>
+    {% endfor %}
+<div class="form-container">
+    <div class="uk-width-large uk-magrin">
+        <div class="uk-card uk-card-small uk-card-default uk-card-body">
+            <h3 class="align">
+               LOGIN FORM
+            </h3>
+            <form method="post">
+                {% csrf_token %}
+
+                <p class="space"><strong>Username</strong></p>
+                <input type="text" name="username" class="form-control" placeholder="Enter Username" maxlength="200">
+                {% comment %}{{ form.username }}{% endcomment %}
+                <br/>
+
+                <p class="space"><strong>Password</strong></p>
+                <input type="password" name="password1" class="form-control" placeholder="Enter Password" maxlength="200">
+              {% comment %}  {{ form.password1 }}{% endcomment %}
+                <br/>
+
+                <button class="btn btn-primary size" type="submit">Login</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
