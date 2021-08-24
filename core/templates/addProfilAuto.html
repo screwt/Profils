@@ -10,7 +10,7 @@
 {% for message in messages %}
     <p>{{ message }}</p>
 {% endfor %}
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{ form.as_table }}

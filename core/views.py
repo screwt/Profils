@@ -62,7 +62,7 @@ def addProfil(request):
     return render(request, 'addProfil.html')
 
 def addProfilAuto(request, id=None):
-    PhotoFormset= inlineformset_factory(Profil, Photo, exclude=())
+    PhotoFormset= inlineformset_factory(Profil, Photo, exclude=(), extra=1)
     instance = None
     if id is not None:
         instance = Profil.objects.get(pk=id)
@@ -74,8 +74,9 @@ def addProfilAuto(request, id=None):
         
     elif request.method=="POST":
         form=ProfilForm(request.POST, instance=instance)
-        photoform_set=PhotoFormset(request.POST, request.FILES, instance=instance)
+        photoform_set=PhotoFormset(request.POST, request.FILES, instance=form.instance)
         print("profilForm.is_valid()", form.is_valid())
+        print(photoform_set.errors)
         if form.is_valid() and photoform_set.is_valid():
             profil=form.save()
             photoform_set.save()
