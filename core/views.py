@@ -61,18 +61,29 @@ def addProfil(request):
         messages.success(request, "ajouté déjà un enfant")
     return render(request, 'addProfil.html')
 
-def addProfilAuto(request):
-    form=ProfilForm()
-    PhotoFormset= inlineformset_factory (Profil,Photo,exclude=())
-    photoform_set=PhotoFormset()
-    if request.method=="POST":
-        profilForm=ProfilForm(request.POST)
-        if profilForm.is_valid():
-            profil=profilForm.save()
-            photoform_set=PhotoFormset(request.POST,request.FILES,instance=profil)
+def addProfilAuto(request, id=None):
+    PhotoFormset= inlineformset_factory(Profil, Photo, exclude=())
+    instance = None
+    if id is not None:
+        instance = Profil.objects.get(pk=id)
+
+    if request.method=="GET":
+        form=ProfilForm(instance=instance)
+        photoform_set=PhotoFormset(instance=instance)
+        ret = render(request,'addProfilAuto.html',context={"form":form,"photoformset":photoform_set})
+        
+    elif request.method=="POST":
+        form=ProfilForm(request.POST, instance=instance)
+        photoform_set=PhotoFormset(request.POST, request.FILES, instance=instance)
+        print("profilForm.is_valid()", form.is_valid())
+        if form.is_valid() and photoform_set.is_valid():
+            profil=form.save()
             photoform_set.save()
             messages.success(request,'form déjà envoyé')
-            redirect('/profils')
-    return render(request,'addProfilAuto.html',context={"form":form,"photoformset":photoform_set})
+            ret = redirect('addProfil', profil.id)
+        else:
+            ret = render(request,'addProfilAuto.html',context={"form":form,"photoformset":photoform_set})
+
+    return ret
 
 #update 

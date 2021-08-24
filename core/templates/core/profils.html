@@ -2,7 +2,7 @@
 {% block content %}
 
 {% for profil in profils %}
-    {{ profil.id }},{{ profil.nom }}
+    <a href="{% url 'addProfil' profil.id %}">{{ profil.id }},{{ profil.nom }}</a>
     {% for photo in profil.photo_set.all %}
         <img src="{{ photo.path.url }}" alt="img" width="500px">
         {{ photo.path.url }}
